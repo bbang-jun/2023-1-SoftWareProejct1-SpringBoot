@@ -1,6 +1,8 @@
 package com.example.Proj1_2019202023.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,5 +13,10 @@ public class PictureBoardController {
     @RequestMapping(value={"/", "/index.html"}, method = RequestMethod.GET)
     public String home(){
         return "Index";
+    }
+
+    @GetMapping("/upload.html")
+    public String clickPictureUpload(){
+        return "Upload";
     }
 }

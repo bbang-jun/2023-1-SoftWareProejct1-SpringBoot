@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>사진 게시판 메인 페이지</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <h2>test</h2>
+
+<h1>Index.html</h1>
+
+<div class="container mt-5">
+    <table class="table">
+        <th>
+        <tr class="text-center">
+            <th>사진</th>
+            <th>제목</th>
+        </tr>
+        </th>
+        <tbody>
+        <tr class="text-center" th:each="board: ${boardList}">
+            <td th:text="${board.indexNumber}"></td>
+            <td>
+                <!--        td에다 href 적용이 안되어서 클릭이 x 앵커 태그로 해주어야 함        -->
+                <a th:text="${board.title}" th:href="@{|/board/detail/${board.indexNumber}|}" style="cursor: pointer; text-decoration:none"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<button id="button" onClick="location.href='/upload.html'">사진 올리기</button>
+
+
+
+
+
 </body>
 </html>

@@ -25,7 +25,7 @@
     - [ ] 사진과 간단한 타이틀 업로드 최신순으로 시각화
     - [ ] 타이틀의 최대 길이 20
     - [ ] 사진과 타이틀은 모두 클릭 가능하게 처리, 클릭할 시 ImageView.html 을 통해 관련 내용 시각화
-    - [ ] "사진 올리기" 버튼 클릭 시 Upload.html로 이동
+    - [x] "사진 올리기" 버튼 클릭 시 Upload.html로 이동
     - [ ] “localhost:8080/”과 “localhost:8080/index.html” 모두 접근 가능하도록 처리
   
 - Upload.html
