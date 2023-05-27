@@ -1,11 +1,9 @@
 package com.example.Proj1_2019202023.controller;
 
+import com.example.Proj1_2019202023.dto.PictureBoardDto;
 import com.example.Proj1_2019202023.service.PictureBoardService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PictureBoardController {
@@ -32,7 +30,8 @@ public class PictureBoardController {
     // Upload.html
     // "전송" 버튼 클릭 시 Index.html
     @PostMapping("/upload.html")
-    public String createAPI(){
+    public String createAPI(@ModelAttribute PictureBoardDto pictureBoardDto){
+        pictureBoardService.create(pictureBoardDto);
         return "redirect:/index.html";
     }
 }

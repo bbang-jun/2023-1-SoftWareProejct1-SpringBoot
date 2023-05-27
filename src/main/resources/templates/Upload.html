@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymleaf.org">
 <head>
+    <meta charset="utf-8">
     <title>My Webpage</title>
     <style>
         body {
@@ -52,19 +53,22 @@
 </head>
 <body>
 <div class="form-container">
-    <div class="form-field">
-        <label for="title">제목(최대 20자)</label>
-        <input type="text" id="title" maxlength="20">
-    </div>
-    <div class="form-field">
-        <label for="content">내용(최대 100자)</label>
-        <textarea id="content" maxlength="100"></textarea>
-    </div>
-    <div class="form-field">
-        <b>파일 선택:</b>
-        <input type="file">
-        <button id="button" onClick="location.href='/index.html'">전송</button>
-    </div>
+    <form action="/upload.html" method="post">
+        <div class="form-field">
+            <b>제목(최대 20자)</b>
+            <input type="text" name="title" maxlength="20">
+        </div>
+        <div class="form-field">
+            <b>내용(최대 100자)</b>
+            <textarea type="text" name="comment" maxlength="100"></textarea>
+        </div>
+        <div class="form-field">
+            <b>파일 선택:</b>
+            <input type="file">
+            <button type="submit">전송</button>
+        </div>
+    </form>
+
 </div>
 </body>
 </html>

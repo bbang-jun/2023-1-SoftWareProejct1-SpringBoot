@@ -15,8 +15,8 @@ import java.util.List;
 public class PictureBoardDto {
 
     private Long id;
-    private Long title;
-    private Long comment;
+    private String title;
+    private String comment;
 
     public static PictureBoardDto toPictureBoardDto(PictureBoardEntity pictureBoardEntity){
         PictureBoardDto pictureBoardDto = new PictureBoardDto();
