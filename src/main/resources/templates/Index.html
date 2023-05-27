@@ -19,30 +19,25 @@
 <h1>Index.html</h1>
 
 <div class="container mt-5">
-    <table class="table">
-        <th>
-        <tr class="text-center">
-            <th>사진</th>
-            <th>제목</th>
-        </tr>
-        </th>
+    <table class="table" th:each="board: ${boardList}">
         <tbody>
-        <tr class="text-center" th:each="board: ${boardList}">
-            <td th:text="${board.indexNumber}"></td>
+        <tr class="text-center" >
             <td>
-                <!--        td에다 href 적용이 안되어서 클릭이 x 앵커 태그로 해주어야 함        -->
-                <a th:text="${board.title}" th:href="@{|/board/detail/${board.indexNumber}|}" style="cursor: pointer; text-decoration:none"></a>
+                <!--        td에 href 적용이 안되어서 클릭이 x 앵커 태그로 해주었음        -->
+                <a th:text="${board.title}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
+            </td>
+        </tr>
+        <tr class="text-center" >
+            <td>
+                <!--        td에 href 적용이 안되어서 클릭이 x 앵커 태그로 해주었음        -->
+                <a th:text="${board.comment}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<button id="button" onClick="location.href='/upload.html'">사진 올리기</button>
-
-
-
-
+<button th:onclick="|window.location.href='/upload.html'|">사진 올리기</button>
 
 </body>
 </html>

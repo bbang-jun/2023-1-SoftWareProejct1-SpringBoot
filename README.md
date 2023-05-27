@@ -37,6 +37,6 @@
   
 - ImageView.html
     ![img_3.png](img_3.png)
-    - [ ] Index.html에서 누른 사진 또는 타이틀에 대한 정보 시각화
-    - [ ] "삭제" 버튼 클릭 시 시 DB에서 제거
-    - [ ] "수정" 버튼 클릭 시 Upload.html로 이동 후 데이터 수정
+    - [x] Index.html에서 누른 사진 또는 타이틀에 대한 정보 시각화
+    - [x] "삭제" 버튼 클릭 시 시 DB에서 제거
+    - [x] "수정" 버튼 클릭 시 Upload.html로 이동 후 데이터 수정

@@ -53,7 +53,8 @@
 </head>
 <body>
 <div class="form-container">
-    <form action="/upload.html" method="post">
+
+    <form th:object="${modify}" th:if="${modify != null}" th:action="@{|/upload.html/${modify.id}|}" method="post">
         <div class="form-field">
             <b>제목(최대 20자)</b>
             <input type="text" name="title" maxlength="20">
@@ -68,6 +69,24 @@
             <button type="submit">전송</button>
         </div>
     </form>
+
+    <form th:object="${modify}" th:unless="${modify != null}" th:action="@{/upload.html}" method="post">
+        <div class="form-field">
+            <b>제목(최대 20자)</b>
+            <input type="text" name="title" maxlength="20">
+        </div>
+        <div class="form-field">
+            <b>내용(최대 100자)</b>
+            <textarea type="text" name="comment" maxlength="100"></textarea>
+        </div>
+        <div class="form-field">
+            <b>파일 선택:</b>
+            <input type="file">
+            <button type="submit">전송</button>
+        </div>
+    </form>
+
+
 
 </div>
 </body>
