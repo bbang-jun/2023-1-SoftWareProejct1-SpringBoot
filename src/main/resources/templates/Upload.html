@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>My Webpage</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            max-width: 460px; /* 왼쪽 여백 30px, 오른쪽 여백 30px */
+            width: 100%;
+            padding: 20px 30px; /* 상단 여백 20px, 하단 여백 20px */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-field {
+            margin-bottom: 10px;
+        }
+
+        .form-field label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-field input[type="text"],
+        .form-field textarea {
+            width: 100%;
+            padding: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .form-field textarea {
+            resize: none;
+            height: 150px;
+            overflow-y: auto;
+        }
+
+        .form-field input[type="file"],
+        .form-field input[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>upload.html</h1>
+<div class="form-container">
+    <div class="form-field">
+        <label for="title">제목(최대 20자)</label>
+        <input type="text" id="title" maxlength="20">
+    </div>
+    <div class="form-field">
+        <label for="content">내용(최대 100자)</label>
+        <textarea id="content" maxlength="100"></textarea>
+    </div>
+    <div class="form-field">
+        <b>파일 선택:</b>
+        <input type="file">
+        <button id="button" onClick="location.href='/index.html'">전송</button>
+    </div>
+</div>
 </body>
 </html>
