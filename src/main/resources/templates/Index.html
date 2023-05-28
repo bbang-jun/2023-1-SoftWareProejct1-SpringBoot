@@ -6,7 +6,7 @@
         body {
             display: flex;
             flex-direction: column;
-            align-items: center;
+
             height: 100vh;
             margin: 0;
         }
@@ -14,6 +14,7 @@
         .header {
             display: flex;
             align-items: center;
+            flex-direction: column;
             margin-bottom: 20px;
         }
 
@@ -24,6 +25,19 @@
         .upload-button {
             margin-left: 10px;
         }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .image{
+            max-width: 100%;
+            max-height: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -33,21 +47,15 @@
     <button class="upload-button" th:onclick="|window.location.href='/upload.html'|">사진 올리기</button>
 </div>
 
-<div class="container mt-5">
-    <table class="table" th:each="board: ${pictureBoards}">
-        <tbody>
-        <tr class="text-center">
-            <td>
-                <img th:src="@{${board.filePath}}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="width: 300px; height: 300px;">
-            </td>
-        </tr>
-        <tr class="text-center">
-            <td>
-                <a th:text="${board.title}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="cursor: pointer; text-decoration:none"></a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div th:each="board: ${pictureBoards}" style="margin-left: 50px;" >
+        <div>
+            <img class="image" th:src="@{${board.filePath}}" th:onclick="|window.location.href='/imageview/${board.id}'|" style= "height: 200px;">
+        </div>
+        <div>
+            <a th:text="${board.title}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="cursor: pointer; text-decoration:none"></a>
+        </div>
+    </div>
 </div>
 
 </body>
