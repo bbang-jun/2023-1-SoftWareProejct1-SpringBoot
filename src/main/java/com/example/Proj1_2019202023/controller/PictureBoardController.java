@@ -1,14 +1,19 @@
 package com.example.Proj1_2019202023.controller;
 
 import com.example.Proj1_2019202023.dto.PictureBoardDto;
+import com.example.Proj1_2019202023.entity.PictureBoardEntity;
 import com.example.Proj1_2019202023.service.PictureBoardService;
 import org.apache.coyote.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class PictureBoardController {
@@ -73,6 +78,30 @@ public class PictureBoardController {
         return "redirect:/index.html";
     }
 }
+
+
+    // Upload.html
+    // "전송" 버튼 클릭 시 Index.html
+    // Upload.html
+    // 수정 완료
+    //@RequestMapping(value = {"/upload.html", "/upload.html/{id}"}, method = RequestMethod.POST)
+    //public String handleFormSubmission(@PathVariable(required = false) Long id, @ModelAttribute PictureBoardDto pictureBoardDto) {
+    //    if (id != null) {
+    //        pictureBoardService.update(pictureBoardDto);
+    //    }
+    //    else {
+    //        pictureBoardService.save(pictureBoardDto);
+    //    }
+
+    //    return "redirect:/index.html";
+    //}
+
+
+
+
+
+
+
 
 // Upload.html
 // "전송" 버튼 클릭 시 Index.html

@@ -8,7 +8,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
             height: 100vh;
             margin: 0;
         }
@@ -23,13 +22,11 @@
         <tbody>
         <tr class="text-center" >
             <td>
-                <!--        td에 href 적용이 안되어서 클릭이 x 앵커 태그로 해주었음        -->
-                <a th:text="${board.title}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
+                <a th:text="${board.comment}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
             </td>
         </tr>
         <tr class="text-center" >
             <td>
-                <!--        td에 href 적용이 안되어서 클릭이 x 앵커 태그로 해주었음        -->
                 <a th:text="${board.comment}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
             </td>
         </tr>

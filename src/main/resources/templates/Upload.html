@@ -70,7 +70,7 @@
         </div>
     </form>
 
-    <form th:object="${modify}" th:unless="${modify != null}" th:action="@{/upload.html}" method="post">
+    <form th:object="${modify}" th:unless="${modify != null}" th:action="@{/upload.html}" method="post" enctype="multipart/form-data">
         <div class="form-field">
             <b>제목(최대 20자)</b>
             <input type="text" name="title" maxlength="20">
@@ -81,13 +81,10 @@
         </div>
         <div class="form-field">
             <b>파일 선택:</b>
-            <input type="file">
+            <input multiple type="file" accept=".jpg, .jpeg, .png">
             <button type="submit">전송</button>
         </div>
     </form>
-
-
-
 </div>
 </body>
 </html>

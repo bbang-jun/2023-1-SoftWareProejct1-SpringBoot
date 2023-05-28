@@ -30,10 +30,10 @@
   
 - Upload.html
     ![img.png](img.png)
-    - [ ] 파일은 이미지만 받을 수 있도록 처리
-    - [ ] 이미지는 .jpg, .jpeg, .png 파일만 업로드 가능
+    - [x] 파일은 이미지만 받을 수 있도록 처리
+    - [x] 이미지는 .jpg, .jpeg, .png 파일만 업로드 가능
     - [x] Title의 최대 길이 20, Comment의 최대 길이 100으로 제한
-    - [ ] "전송" 버튼 클릭 시(업로드 완료 후), Index.html 로 이동
+    - [x] "전송" 버튼 클릭 시(업로드 완료 후), Index.html 로 이동
   
 - ImageView.html
     ![img_3.png](img_3.png)
