@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Data
-@Table(name = "picture_board")
+@Table(name = "Proj1_DB_2019202023")
 public class PictureBoardEntity {
 
     @Id
@@ -25,10 +25,18 @@ public class PictureBoardEntity {
     @Column
     private String comment;
 
+    @Column(length = 1000)
+    private String fileName;
+
+    @Column(length = 1000)
+    private String filePath;
+
     public static PictureBoardEntity toBoardEntity(PictureBoardDto pictureBoardDto){
         PictureBoardEntity pictureBoardEntity = new PictureBoardEntity();
         pictureBoardEntity.setTitle(pictureBoardDto.getTitle());
         pictureBoardEntity.setComment(pictureBoardDto.getComment());
+        pictureBoardEntity.setFileName(pictureBoardDto.getFileName());
+        pictureBoardEntity.setFilePath(pictureBoardDto.getFilePath());
 
         return pictureBoardEntity;
     }

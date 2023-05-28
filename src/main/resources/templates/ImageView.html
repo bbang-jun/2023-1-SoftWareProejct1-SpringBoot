@@ -8,11 +8,16 @@
 </head>
 <body>
 <div class="d-flex flex-column container align-items-center mt-5">
-    <div class="border mt-5" style="width:60%">
+
+    <div class="border mt-5">
+        <img th:src="@{${board.filePath}}" style="width: 300px; height: 300px;">
+    </div>
+
+    <div class="border mt-5" style="width:50%">
         <p th:text="${board.title}"></p>
     </div>
 
-    <div class="border mt-5" style="width:60%">
+    <div class="border mt-5" style="width:50%">
         <p th:text="${board.comment}"></p>
     </div>
 

@@ -3,23 +3,26 @@ package com.example.Proj1_2019202023.controller;
 import com.example.Proj1_2019202023.dto.PictureBoardDto;
 import com.example.Proj1_2019202023.entity.PictureBoardEntity;
 import com.example.Proj1_2019202023.service.PictureBoardService;
-import org.apache.coyote.Request;
+import jdk.swing.interop.SwingInterOpUtils;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 @Controller
 public class PictureBoardController {
 
     private final PictureBoardService pictureBoardService;
 
+    @Autowired
     public PictureBoardController(PictureBoardService pictureBoardService){
         this.pictureBoardService = pictureBoardService;
     }
@@ -28,7 +31,7 @@ public class PictureBoardController {
     @RequestMapping(value={"/", "/index.html"}, method = RequestMethod.GET)
     public String home(Model model){
         List<PictureBoardDto> pictureBoardDtoList = pictureBoardService.findAll();
-        model.addAttribute("boardList", pictureBoardDtoList);
+        model.addAttribute("pictureBoards", pictureBoardDtoList);
         return "Index";
     }
 
@@ -67,70 +70,29 @@ public class PictureBoardController {
     // Upload.html
     // 수정 완료
     @RequestMapping(value = {"/upload.html", "/upload.html/{id}"}, method = RequestMethod.POST)
-    public String handleFormSubmission(@PathVariable(required = false) Long id, @ModelAttribute PictureBoardDto pictureBoardDto) {
+    public String handleFormSubmission(@PathVariable(required = false) Long id,
+                                       @ModelAttribute PictureBoardDto pictureBoardDto,
+                                       @RequestParam("file")MultipartFile file) throws Exception {
         if (id != null) {
-            pictureBoardService.update(pictureBoardDto);
+            PictureBoardDto tempBoardDto = pictureBoardService.findById(pictureBoardDto.getId());
+            String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\" + tempBoardDto.getFileName();
+            File deleteFile = new File(filePath);
+
+            boolean abc = deleteFile.delete();
+            System.out.println("fjifjweijwiofjweiojfeiowfjiowjfeiowjfwiofjweoifjwiojefiowije         "+filePath + " " + abc);
+            pictureBoardService.update(pictureBoardDto, file);
         }
         else {
-            pictureBoardService.create(pictureBoardDto);
+            pictureBoardService.create(pictureBoardDto, file);
         }
 
         return "redirect:/index.html";
     }
+
+    @ResponseBody
+    @GetMapping(path = "/static/{fileName}")
+    public Resource returnImage(@PathVariable String fileName) throws Exception{
+        String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + fileName;
+        return new UrlResource("file:"+ filePath);
+    }
 }
-
-
-    // Upload.html
-    // "전송" 버튼 클릭 시 Index.html
-    // Upload.html
-    // 수정 완료
-    //@RequestMapping(value = {"/upload.html", "/upload.html/{id}"}, method = RequestMethod.POST)
-    //public String handleFormSubmission(@PathVariable(required = false) Long id, @ModelAttribute PictureBoardDto pictureBoardDto) {
-    //    if (id != null) {
-    //        pictureBoardService.update(pictureBoardDto);
-    //    }
-    //    else {
-    //        pictureBoardService.save(pictureBoardDto);
-    //    }
-
-    //    return "redirect:/index.html";
-    //}
-
-
-
-
-
-
-
-
-// Upload.html
-// "전송" 버튼 클릭 시 Index.html
-//@PostMapping("/upload.html")
-// String createAPI(@ModelAttribute PictureBoardDto pictureBoardDto){
-//    pictureBoardService.create(pictureBoardDto);
-//    return "redirect:/index.html";
-//}
-
-// Upload.html
-// 수정 완료
-//@PostMapping("/upload.html/{id}")
-//public String clickModifyUpload(@ModelAttribute PictureBoardDto pictureBoardDto){
-//    pictureBoardService.update(pictureBoardDto);
-//    return "redirect:/index.html";
-//}
-
-// Index.html
-// "사진 올리기" 버튼 클릭 시 Upload.html로 이동
-//@GetMapping("/upload.html")
-//public String clickPictureUpload(){
-//    return "Upload";
-//}
-
-// ImageView.html
-// "수정" 버튼 클릭 시 Upload.html로 이동
-//@GetMapping("/upload.html/{id}")
-//public String clickModify(@PathVariable Long id, Model model){
-//    PictureBoardDto pictureBoardDto = pictureBoardService.findById(id);
-//    model.addAttribute("modify", pictureBoardDto);
-//    return "Upload";
-//}

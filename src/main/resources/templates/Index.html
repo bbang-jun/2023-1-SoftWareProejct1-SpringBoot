@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>사진 게시판 메인 페이지</title>
     <style>
         body {
             display: flex;
@@ -11,30 +10,45 @@
             height: 100vh;
             margin: 0;
         }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-right: 10px;
+        }
+
+        .upload-button {
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
 
-<h1>Index.html</h1>
+<div class="header">
+    <h1>Index.html</h1>
+    <button class="upload-button" th:onclick="|window.location.href='/upload.html'|">사진 올리기</button>
+</div>
 
 <div class="container mt-5">
-    <table class="table" th:each="board: ${boardList}">
+    <table class="table" th:each="board: ${pictureBoards}">
         <tbody>
-        <tr class="text-center" >
+        <tr class="text-center">
             <td>
-                <a th:text="${board.comment}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
+                <img th:src="@{${board.filePath}}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="width: 300px; height: 300px;">
             </td>
         </tr>
-        <tr class="text-center" >
+        <tr class="text-center">
             <td>
-                <a th:text="${board.comment}" th:href="@{|/imageview/${board.id}|}" style="cursor: pointer; text-decoration:none"></a>
+                <a th:text="${board.title}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="cursor: pointer; text-decoration:none"></a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-
-<button th:onclick="|window.location.href='/upload.html'|">사진 올리기</button>
 
 </body>
 </html>
