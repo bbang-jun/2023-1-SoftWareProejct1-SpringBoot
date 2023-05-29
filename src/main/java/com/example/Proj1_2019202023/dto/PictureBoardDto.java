@@ -2,8 +2,6 @@ package com.example.Proj1_2019202023.dto;
 
 import com.example.Proj1_2019202023.entity.PictureBoardEntity;
 import lombok.*;
-
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 

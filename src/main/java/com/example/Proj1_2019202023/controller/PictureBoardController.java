@@ -1,10 +1,7 @@
 package com.example.Proj1_2019202023.controller;
 
 import com.example.Proj1_2019202023.dto.PictureBoardDto;
-import com.example.Proj1_2019202023.entity.PictureBoardEntity;
 import com.example.Proj1_2019202023.service.PictureBoardService;
-import jdk.swing.interop.SwingInterOpUtils;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -74,12 +71,10 @@ public class PictureBoardController {
                                        @ModelAttribute PictureBoardDto pictureBoardDto,
                                        @RequestParam("file")MultipartFile file) throws Exception {
         if (id != null) {
-            PictureBoardDto tempBoardDto = pictureBoardService.findById(pictureBoardDto.getId());
-            String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\" + tempBoardDto.getFileName();
+            PictureBoardDto findBoardDto = pictureBoardService.findById(pictureBoardDto.getId());
+            String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\" + findBoardDto.getFileName();
             File deleteFile = new File(filePath);
-
-            boolean abc = deleteFile.delete();
-            System.out.println("fjifjweijwiofjweiojfeiowfjiowjfeiowjfwiofjweoifjwiojefiowije         "+filePath + " " + abc);
+            deleteFile.delete();
             pictureBoardService.update(pictureBoardDto, file);
         }
         else {

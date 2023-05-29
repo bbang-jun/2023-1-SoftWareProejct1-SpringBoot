@@ -1,7 +1,6 @@
 package com.example.Proj1_2019202023.entity;
 
 import com.example.Proj1_2019202023.dto.PictureBoardDto;
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
