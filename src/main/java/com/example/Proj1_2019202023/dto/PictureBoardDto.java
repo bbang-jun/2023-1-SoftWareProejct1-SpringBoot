@@ -2,8 +2,6 @@ package com.example.Proj1_2019202023.dto;
 
 import com.example.Proj1_2019202023.entity.PictureBoardEntity;
 import lombok.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -27,14 +25,4 @@ public class PictureBoardDto {
         pictureBoardDto.setFilePath(pictureBoardEntity.getFilePath());
         return pictureBoardDto;
     }
-
-    public static List<PictureBoardDto> toPictureBoardDtoList(List<PictureBoardEntity> pictureBoardEntityList){
-        List<PictureBoardDto> pictureBoardDtoList = new ArrayList<>();
-        for(PictureBoardEntity pictureBoardEntity : pictureBoardEntityList){
-            pictureBoardDtoList.add(toPictureBoardDto(pictureBoardEntity));
-        }
-
-        return pictureBoardDtoList;
-    }
-
 }

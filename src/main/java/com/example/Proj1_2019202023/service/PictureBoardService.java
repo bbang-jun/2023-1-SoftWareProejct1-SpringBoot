@@ -55,6 +55,11 @@ public class PictureBoardService {
     }
 
     public void deleteById(Long id){
+        PictureBoardEntity pictureBoardEntity = pictureBoardRepository.findById(id).get();
+        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\" + pictureBoardEntity.getFileName();
+        File deleteFile = new File(filePath);
+        deleteFile.delete();
+
         pictureBoardRepository.deleteById(id);
     }
 
@@ -74,7 +79,6 @@ public class PictureBoardService {
             pictureBoardEntity.setComment(pictureBoardDto.getComment());
             pictureBoardEntity.setFileName(fileName);
             pictureBoardEntity.setFilePath("/static/" + fileName);
-
 
             pictureBoardRepository.save(pictureBoardEntity);
         } else {

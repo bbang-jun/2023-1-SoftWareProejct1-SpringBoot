@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.io.File;
 import java.util.List;
 
@@ -80,7 +79,6 @@ public class PictureBoardController {
         else {
             pictureBoardService.create(pictureBoardDto, file);
         }
-
         return "redirect:/index.html";
     }
 
