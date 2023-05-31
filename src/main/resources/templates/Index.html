@@ -44,14 +44,18 @@
 
 <div class="header">
     <h1>Index.html</h1>
+    <!--   "사진 올리기" 버튼 클릭 시 upload.html로 이동-->
     <button class="upload-button" th:onclick="|window.location.href='/upload.html'|">사진 올리기</button>
 </div>
 
 <div class="container">
+    <!--    thymeleaf 문법을 통해 pictureBoards에 dto list를 mapping하여 Index.html에서 보여줌-->
     <div th:each="board: ${pictureBoards}" style="margin-left: 50px;" >
+        <!--        게시글의 이미지(클릭 시 ImageView로 이동) -->
         <div>
             <img class="image" th:src="@{${board.filePath}}" th:onclick="|window.location.href='/imageview/${board.id}'|" style= "height: 200px;">
         </div>
+        <!--      게시글의 제목(클릭 시 ImageView로 이동)  -->
         <div>
             <a th:text="${board.title}" th:onclick="|window.location.href='/imageview/${board.id}'|" style="cursor: pointer; text-decoration:none"></a>
         </div>

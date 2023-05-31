@@ -17,7 +17,7 @@
 ## 화면 구성
 - [x] Index.html
 - [x] Upload.html
-- [x] ImageView.html
+- [x] ImageVew.html
 
 ## 구현 체크 리스트
 - Index.html

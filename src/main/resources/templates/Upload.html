@@ -49,38 +49,58 @@
         .form-field input[type="submit"] {
             margin-top: 10px;
         }
+
+        .header {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+
+<div class="header">
+    <h1>Upload.html</h1>
+</div>
+
 <div class="form-container">
 
+    <!--    게시글 수정을 위해 들어온 경우-->
     <form th:object="${modify}" th:if="${modify != null}" th:action="@{|/upload.html/${modify.id}|}" method="post" enctype="multipart/form-data">
         <div class="form-field">
+            <!--            게시글의 제목 입력. 최대 20자까지 작성할 수 있도록 maxlength를 20으로 설정-->
             <b>제목(최대 20자)</b>
             <input type="text" name="title" maxlength="20">
         </div>
         <div class="form-field">
+            <!--            게시글 내용 입력. 최대 100자까지 작성할 수 있도록 maxlength를 100으로 설정-->
             <b>내용(최대 100자)</b>
             <textarea type="text" name="comment" maxlength="100"></textarea>
         </div>
         <div class="form-field">
             <b>파일 선택:</b>
+            <!--            이미지는 .jpg, .jpeg, .png 파일만 업로드 가능하도록 제한-->
             <input type="file" name="file" accept=".jpg, .jpeg, .png">
             <button type="submit">전송</button>
         </div>
     </form>
 
+    <!--    게시글 수정이 아닌, Index.html에서 게시글 작성을 클릭하여 들어온 경우-->
     <form th:object="${modify}" th:unless="${modify != null}" th:action="@{/upload.html}" method="post" enctype="multipart/form-data">
         <div class="form-field">
+            <!--            게시글의 제목 입력. 최대 20자까지 작성할 수 있도록 maxlength를 20으로 설정-->
             <b>제목(최대 20자)</b>
             <input type="text" name="title" maxlength="20">
         </div>
         <div class="form-field">
+            <!--            게시글 내용 입력. 최대 100자까지 작성할 수 있도록 maxlength를 100으로 설정-->
             <b>내용(최대 100자)</b>
             <textarea type="text" name="comment" maxlength="100"></textarea>
         </div>
         <div class="form-field">
             <b>파일 선택:</b>
+            <!--            이미지는 .jpg, .jpeg, .png 파일만 업로드 가능하도록 제한-->
             <input type="file" name="file" accept=".jpg, .jpeg, .png">
             <button type="submit">전송</button>
         </div>
